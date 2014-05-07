@@ -8,6 +8,6 @@
 
 (om/root
   (fn [app owner]
-    (dom/h1 nil (:text app)))
+    (dom/text #js{:fill "red" :x 370 :y 150 :font-size 55} (:text app)))
   app-state
   {:target (. js/document (getElementById "app"))})
