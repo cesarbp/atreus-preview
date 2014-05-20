@@ -8,5 +8,6 @@ pom.xml
 .lein-repl-history
 .lein-plugins/
 .nrepl-port
-/resources/
+/resources/out/
+/resources/atreus_preview.js
 /.repl/

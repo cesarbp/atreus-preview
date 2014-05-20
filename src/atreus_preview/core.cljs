@@ -11,52 +11,51 @@
 (enable-console-print!)
 
 (def magic-numbers
-  [[{:x 66  :y 48}
-    {:x 136 :y 48}
-    {:x 202 :y 45}
-    {:x 268 :y 74}
-    {:x 330 :y 110}
-    {:x 489 :y 107}
-    {:x 558 :y 71}
-    {:x 618 :y 45}
-    {:x 687 :y 48}
-    {:x 755 :y 47}]
+  [[{:x 66  :y 48 :side :left}
+    {:x 136 :y 48 :side :left}
+    {:x 202 :y 45 :side :left}
+    {:x 268 :y 74 :side :left}
+    {:x 330 :y 110 :side :left}
+    {:x 489 :y 107 :side :right}
+    {:x 558 :y 71 :side :right}
+    {:x 618 :y 45 :side :right}
+    {:x 687 :y 48 :side :right}
+    {:x 755 :y 47 :side :right}]
 
-   [{:x 52  :y 119}
-    {:x 123 :y 123}
-    {:x 188 :y 116}
-    {:x 252 :y 145}
-    {:x 316 :y 177}
-    {:x 499 :y 172}
-    {:x 561 :y 136}
-    {:x 626 :y 111}
-    {:x 693 :y 118}
-    {:x 761 :y 115}]
+   [{:x 52  :y 119 :side :left}
+    {:x 123 :y 123 :side :left}
+    {:x 188 :y 116 :side :left}
+    {:x 252 :y 145 :side :left}
+    {:x 316 :y 177 :side :left}
+    {:x 499 :y 172 :side :right}
+    {:x 561 :y 136 :side :right}
+    {:x 626 :y 111 :side :right}
+    {:x 693 :y 118 :side :right}
+    {:x 761 :y 115 :side :right}]
 
-   [{:x 39  :y 190}
-    {:x 107 :y 191}
-    {:x 179 :y 181}
-    {:x 245 :y 208}
-    {:x 306 :y 241}
-    {:x 364 :y 278}
-    {:x 510 :y 237}
-    {:x 572 :y 204}
-    {:x 634 :y 173}
-    {:x 709 :y 180}
-    {:x 777 :y 181}]
+   [{:x 39  :y 190 :side :left}
+    {:x 107 :y 191 :side :left}
+    {:x 179 :y 181 :side :left}
+    {:x 245 :y 208 :side :left}
+    {:x 306 :y 241 :side :left}
+    {:x 364 :y 278 :side :left}
+    {:x 510 :y 237 :side :right}
+    {:x 572 :y 204 :side :right}
+    {:x 634 :y 173 :side :right}
+    {:x 709 :y 180 :side :right}
+    {:x 777 :y 181 :side :right}]
 
-   [{:x 24  :y 253}
-    {:x 94  :y 254}
-    {:x 168 :y 247}
-    {:x 230 :y 274}
-    {:x 295 :y 308}
-    {:x 448 :y 280}
-    {:x 520 :y 300}
-    {:x 586 :y 270}
-    {:x 649 :y 237}
-    {:x 721 :y 246}
-    {:x 789 :y 247}]])
-
+   [{:x 24  :y 253 :side :left}
+    {:x 94  :y 254 :side :left}
+    {:x 168 :y 247 :side :left}
+    {:x 230 :y 274 :side :left}
+    {:x 295 :y 308 :side :left}
+    {:x 448 :y 280 :side :right}
+    {:x 520 :y 300 :side :right}
+    {:x 586 :y 270 :side :right}
+    {:x 649 :y 237 :side :right}
+    {:x 721 :y 246 :side :right}
+    {:x 789 :y 247 :side :right}]])
 
 (def app-state
   (atom
@@ -77,16 +76,25 @@
       (apply dom/g #js{:id "labels"}
              (mapcat
               (fn [[row ridx]]
-                (for [[key kidx] (map vector row (range))]
+                (for [[key kidx] (map vector row (range))
+                      :let [x (get-in magic-numbers [ridx kidx :x])
+                            y (get-in magic-numbers [ridx kidx :y])
+                            side (get-in magic-numbers [ridx kidx :side])]]
                   (try
                     (let [label (util/show-key key)]
-                      (dom/text #js{:x (get-in magic-numbers [ridx kidx :x])
-                                    :y (get-in magic-numbers [ridx kidx :y])}
+                      (dom/text #js{:x x
+                                    :y y
+                                    :transform (if (= :left side)
+                                                 (str "rotate(10 " x " " y ")")
+                                                 (str "rotate(-10 " x " " y ")"))}
                                 label))
                     (catch js/Error e
-                      (dom/text #js{:x (get-in magic-numbers [ridx kidx :x])
-                                    :y (get-in magic-numbers [ridx kidx :y])
-                                    :fill "red"}
+                      (dom/text #js{:x x
+                                    :y y
+                                    :fill "red"
+                                    :transform (if (= :left side)
+                                                 (str "rotate(10 " x " " y ")")
+                                                 (str "rotate(-10 " x " " y ")"))}
                                 (str key))))))
                      (map vector layer (range)))))))
 
@@ -186,7 +194,7 @@
                            (dom/span nil
                                      " | ")
                            (om/build errors-view (:errors app)))
-                  (dom/textarea #js{:rows 20
+                  (dom/textarea #js{:rows 30
                                     :cols 80
                                     :ref "modify-json"
                                     :value (:json app)
