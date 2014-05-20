@@ -86,7 +86,8 @@
                                     :y y
                                     :transform (if (= :left side)
                                                  (str "rotate(10 " x " " y ")")
-                                                 (str "rotate(-10 " x " " y ")"))}
+                                                 (str "rotate(-10 " x " " y ")"))
+                                    :style #js{:text-anchor "middle"}}
                                 label))
                     (catch js/Error e
                       (dom/text #js{:x x
@@ -94,7 +95,8 @@
                                     :fill "red"
                                     :transform (if (= :left side)
                                                  (str "rotate(10 " x " " y ")")
-                                                 (str "rotate(-10 " x " " y ")"))}
+                                                 (str "rotate(-10 " x " " y ")"))
+                                    :style #js{:text-anchor "middle"}}
                                 (str key))))))
                      (map vector layer (range)))))))
 
