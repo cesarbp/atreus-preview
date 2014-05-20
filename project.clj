@@ -3,13 +3,13 @@
   :url "https://github.com/cesarbp/atreus-preview"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2173"]
-                 [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
+                 [org.clojure/clojurescript "0.0-2202"]
+                 [org.clojure/core.async "0.1.303.0-886421-alpha"]
                  [om "0.6.2"]]
 
-  :plugins [[lein-cljsbuild "1.0.2"]]
+  :plugins [[lein-cljsbuild "1.0.3"]]
 
-  :profiles {:dev {:plugins [[com.cemerick/austin "0.1.5-SNAPSHOT"]]}}
+  :profiles {:dev {:dependencies [[org.clojars.cbp/pudge "0.1.0"]]}}
 
   :source-paths ["src"]
 
@@ -17,7 +17,7 @@
     :builds [{:id "atreus-preview"
               :source-paths ["src"]
               :compiler {
-                :output-to "atreus_preview.js"
-                :output-dir "out"
+                :output-to "resources/atreus_preview.js"
+                :output-dir "resources/out"
                 :optimizations :none
                 :source-map true}}]})

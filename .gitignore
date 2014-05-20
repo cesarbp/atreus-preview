@@ -9,3 +9,5 @@ pom.xml
 .lein-plugins/
 atreus_preview.js
 .nrepl-port
+/resources/
+/.repl/
