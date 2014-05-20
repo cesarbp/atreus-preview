@@ -20,4 +20,12 @@
                 :output-to "resources/atreus_preview.js"
                 :output-dir "resources/out"
                 :optimizations :none
-                :source-map true}}]})
+                :source-map true}}
+             {:id "release"
+              :source-paths ["src"]
+              :compiler {
+                :output-to "atreus_release.js"
+                :optimizations :advanced
+                :pretty-print false
+                :preamble ["react/react.min.js"]
+                :externs ["react/externs/react.js"]}}]})

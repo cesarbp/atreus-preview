@@ -20,9 +20,6 @@
   [[\"layer\", 0], \"\", \"GUI\", \"SHIFT\", \"BACKSPACE\", \"CTRL\",
    \"SPACE\", \"FN\", \"\", [\"reset\"]]]]")
 
-(def json-example
-  "[[[\"A\"], [\"B\"], [\"C\"]], [[\"A\"], [\"B\"], [\"C\"]]]")
-
 (def layout-example
   (js->clj (js/JSON.parse json-example)))
 

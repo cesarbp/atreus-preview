@@ -60,7 +60,7 @@
 
 (def app-state
   (atom
-   {:layer 1
+   {:layer 0
     :json constants/json-example
     :edn constants/layout-example
     :errors []}))

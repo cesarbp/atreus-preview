@@ -7,7 +7,6 @@ pom.xml
 .lein-deps-sum
 .lein-repl-history
 .lein-plugins/
-atreus_preview.js
 .nrepl-port
 /resources/
 /.repl/
