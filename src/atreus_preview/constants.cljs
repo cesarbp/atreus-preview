@@ -1,5 +1,52 @@
 (ns atreus-preview.constants)
 
+(def magic-numbers
+  [[{:x 69  :y 43 :side :left}
+    {:x 138 :y 44 :side :left}
+    {:x 207 :y 38 :side :left}
+    {:x 270 :y 67 :side :left}
+    {:x 333 :y 100 :side :left}
+    {:x 491 :y 99 :side :right}
+    {:x 554 :y 66 :side :right}
+    {:x 618 :y 38 :side :right}
+    {:x 687 :y 42 :side :right}
+    {:x 755 :y 43 :side :right}]
+
+   [{:x 56  :y 109 :side :left}
+    {:x 125 :y 110 :side :left}
+    {:x 195 :y 104 :side :left}
+    {:x 258 :y 134 :side :left}
+    {:x 322 :y 167 :side :left}
+    {:x 502 :y 166 :side :right}
+    {:x 565 :y 134 :side :right}
+    {:x 629 :y 105 :side :right}
+    {:x 698 :y 111 :side :right}
+    {:x 767 :y 109 :side :right}]
+
+   [{:x 45  :y 177 :side :left}
+    {:x 114 :y 177 :side :left}
+    {:x 184 :y 171 :side :left}
+    {:x 247 :y 200 :side :left}
+    {:x 309 :y 233 :side :left}
+    {:x 372 :y 276 :side :left}
+    {:x 515 :y 233 :side :right}
+    {:x 577 :y 200 :side :right}
+    {:x 641 :y 170 :side :right}
+    {:x 710 :y 177 :side :right}
+    {:x 779 :y 176 :side :right}]
+
+   [{:x 33  :y 242 :side :left}
+    {:x 102  :y 243 :side :left}
+    {:x 172 :y 237 :side :left}
+    {:x 235 :y 265 :side :left}
+    {:x 297 :y 299 :side :left}
+    {:x 451 :y 275 :side :right}
+    {:x 526 :y 298 :side :right}
+    {:x 589 :y 265 :side :right}
+    {:x 652 :y 236 :side :right}
+    {:x 721 :y 241 :side :right}
+    {:x 791 :y 241 :side :right}]])
+
 ;; Taken from https://github.com/technomancy/atreus-firmware/blob/master/qwerty.json
 (def json-example "[[[\"Q\", \"W\", \"E\", \"R\", \"T\", \"Y\", \"U\", \"I\", \"O\", \"P\"],
   [\"A\", \"S\", \"D\", \"F\", \"G\", \"H\", \"J\", \"K\", \"L\", \"SEMICOLON\"],
@@ -7,26 +54,6 @@
   [\"ESC\", \"TAB\", \"GUI\", \"SHIFT\", \"BACKSPACE\", \"CTRL\",
    \"SPACE\", \"FN\", \"MINUS\", \"QUOTE\", \"ENTER\"]],
  [[[\"shift\", \"1\"], [\"shift\", \"2\"], [\"shift\", \"LEFT_BRACE\"], [\"shift\", \"RIGHT_BRACE\"],
-   [\"shift\", \"BACKSLASH\"], \"PAGE_UP\", \"7\", \"8\", \"9\", [\"shift\", \"8\"]],
-  [[\"shift\", \"3\"], [\"shift\", \"4\"], [\"shift\", \"9\"], [\"shift\", \"0\"],
-  \"TILDE\", \"PAGE_DOWN\", \"4\", \"5\", \"6\", [\"shift\", \"EQUAL\"]],
-  [[\"shift\", \"5\"], [\"shift\", \"6\"], \"LEFT_BRACE\", \"RIGHT_BRACE\", [\"shift\", \"TILDE\"],
-   \"ALT\", [\"shift\", \"7\"], \"1\", \"2\", \"3\", \"BACKSLASH\"],
-  [[\"function\", 2], [\"shift\", \"INSERT\"], \"GUI\", \"SHIFT\", \"BACKSPACE\", \"CTRL\",
-   \"SPACE\", \"FN\", \"PERIOD\", \"0\", \"EQUAL\"]],
- [[\"HOME\", \"UP\", \"END\", \"INSERT\", \"PAGE_UP\", \"UP\", \"F7\", \"F8\", \"F9\", \"F10\"],
-  [\"LEFT\", \"DOWN\", \"RIGHT\", \"DELETE\", \"PAGE_DOWN\", \"DOWN\", \"F4\", \"F5\", \"F6\", \"F11\"],
-  [\"\", \"\", \"\", \"\", \"\", \"ALT\", \"\", \"F1\", \"F2\", \"F3\", \"F12\"],
-  [[\"layer\", 0], \"\", \"GUI\", \"SHIFT\", \"BACKSPACE\", \"CTRL\",
-   \"SPACE\", \"FN\", \"\", [\"reset\"]]]]")
-
-(def json-example
-  "[[[\"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\"],
-  [\"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\"],
-  [\"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\"],
-  [\"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\",
-   \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\", \"AAAA\"]],
- [[[\"AAAA\", \"1\"], [\"shift\", \"2\"], [\"shift\", \"LEFT_BRACE\"], [\"shift\", \"RIGHT_BRACE\"],
    [\"shift\", \"BACKSLASH\"], \"PAGE_UP\", \"7\", \"8\", \"9\", [\"shift\", \"8\"]],
   [[\"shift\", \"3\"], [\"shift\", \"4\"], [\"shift\", \"9\"], [\"shift\", \"0\"],
   \"TILDE\", \"PAGE_DOWN\", \"4\", \"5\", \"6\", [\"shift\", \"EQUAL\"]],

@@ -1,5 +1,18 @@
 textarea, text {
   font-family: 'Anonymous Pro';
   font-weight: 400;
+}
+
+textarea {
   font-size: medium;
+}
+
+path {
+  pointer-events: all;
+  stroke: blue;
+  fill: black;
+}
+path:hover {
+  stroke: red;
+  stroke-width: 5px;
 }
